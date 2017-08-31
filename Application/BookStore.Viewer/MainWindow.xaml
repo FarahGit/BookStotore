@@ -1,0 +1,34 @@
+﻿<Controls:MetroWindow x:Class="BookStore.Viewer.MainWindow"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:BookStore.Viewer"
+                      xmlns:inf="clr-namespace:BookStore.Core;assembly=BookStore.Core"
+                      mc:Ignorable="d" TitleCaps="False" GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveWindowTitleBrush="{StaticResource AccentColorBrush}"
+                      WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+                      BorderBrush="{StaticResource AccentColorBrush}"
+                      BorderThickness="1" Title="Book Store" Height="650" Width="1025"
+                      xmlns:prism="http://prismlibrary.com/"
+                      prism:ViewModelLocator.AutoWireViewModel="True">
+    <Window.Resources>
+        <BitmapImage x:Key="DisplayIcon" UriSource="./Images/display.ico" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ToolBar DockPanel.Dock="Top"
+                 prism:RegionManager.RegionName="ToolbarRegion">
+            <Image Source="{StaticResource DisplayIcon}" Height="16" Margin="5"/>
+            <Label FontWeight="Bold" FontSize="13" Margin="2">Display :</Label>
+
+        </ToolBar>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" />
+        <StatusBar Grid.Row="2" DockPanel.Dock="Bottom" prism:RegionManager.RegionName="StatusbarRegion" />
+    </Grid>
+</Controls:MetroWindow>
